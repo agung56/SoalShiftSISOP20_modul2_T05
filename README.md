@@ -25,15 +25,19 @@ Kode Program: [soal1.c]()
 ### Soal
 Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan ketentuan sebagai berikut:
 
-* Program menerima 4 argumen berupa:
+**a.** Program menerima 4 argumen berupa:
   * Detik: 0-59 atau * (any value)
   * Menit: 0-59 atau * (any value)
   * Jam: 0-23 atau * (any value)
   * Path file .sh
-* Program akan mengeluarkan pesan error jika argumen yang diberikan tidak sesuai
-* Program hanya menerima 1 config cron
-* Program berjalan di background (daemon)
-* Tidak boleh mennggunakan fungsi system()
+  
+**b.** Program akan mengeluarkan pesan error jika argumen yang diberikan tidak sesuai
+
+**c.** Program hanya menerima 1 config cron
+
+**d.** Program berjalan di background (daemon)
+
+**e.** Tidak boleh mennggunakan fungsi system()
 
 **Contoh:** `./program \* 34 7 /home/somi/test.sh`
 #### Kendala Selama Pengerjaan Soal 1
