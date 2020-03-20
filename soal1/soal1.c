@@ -16,14 +16,19 @@ int main(int checkargu, char *valueargu[]) {
     return 1;
   }
   if (!(*valueargu[1] == '*' || (atoi(valueargu[1]) >= 0 && atoi(valueargu[1]) < 60))) {
+       printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
+    return 1;}
+
 
   if (!(*valueargu[2] == '*' || (atoi(valueargu[2]) >= 0 && atoi(valueargu[2]) < 60))) {
+       printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
+    return 1;}
 
   if (!(*valueargu[3] == '*' || (atoi(valueargu[3]) >= 0 && atoi(valueargu[3]) < 24))) {
 
   printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
     return 1;
-  }}}
+  }
 
   pid_t pid, sid;        // Variabel untuk menyimpan PID
   pid = fork();     // Menyimpan PID dari Child Process
