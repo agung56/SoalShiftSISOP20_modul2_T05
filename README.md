@@ -3,23 +3,6 @@
 1. I Gede Pradhana Indra W. (05311840000031)
 2. Agung Mulyono (05311840000035)
 
----
-## Table of Contents
-* [Soal 1](#soal-1)
-* [Soal 2](#soal-2)
-  * [Soal 2.a.](#soal-2a)
-  * [Soal 2.b.](#soal-2b)
-  * [Soal 2.c.](#soal-2c)
-  * [Soal 2.d.](#soal-2d)
-  * [Soal 2.e.](#soal-2e)
-* [Soal 3](#soal-3)
-  * [Soal 3.a.](#soal-3a)
-  * [Soal 3.b.](#soal-3b)
-  * [Soal 3.c.](#soal-3c)
-  * [Soal 3.d.](#soal-3d)
----
-
-
 ## Soal 1
 Kode Program: [soal1.c](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/soal1/soal1.c)
 ### Soal
