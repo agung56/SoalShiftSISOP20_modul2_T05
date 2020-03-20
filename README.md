@@ -33,6 +33,7 @@ Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan k
 #include <wait.h>
 #include <time.h>
 ```
+Untuk membuat program c dibutuhkan beberapa library seperti diatas. library tersebut digunkan untuk memanggil beberapa fungsi yang nantinya akan digunkan pada kode program seperti printf(), if-else, while(), time_t, dan lain sebagainya.
 
 ```c
 if (checkargu != 5) {
@@ -54,6 +55,8 @@ printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
   return 1;
 }
 ```
+Setelah melakukan inputan library-library yang diperlukan, selanjutnya adalah mengecek argumen-argumen yang diinputkan oleh pengguna diterminal. Yang pertama dicek adalah jumlah argumen apakah jumlah argumen berjumlah 5 atau tidak dimana jumlah tersebut terdiri atas program C itu sendiri kemudian detik, menit, jam, dan file .sh yang akan dijalankan. Selanjutnya dilakukan pengecekan terhadap input waktunya, jika waktu yang dimasukkan sesuai dengan ketentuan diatas atau pada soal maka program akan langsung mengeluarkan error dan program tidak dapat dilanjutkan atau harus diulang. Disini kami menggunakan fungsi **atoi** yang berfungsi untuk mengubah tipe data string menjadi integer. Kemudian yang terakhir dicek adalah file .sh itu sendiri apakah file .sh yang akan dijalankan sudah ada dan siap untuk dijalankan. Untuk mengeceknya dengan menggunakan fungsi **access()** untuk melihat apakah file .sh sudah ada.
+
 ```c
 pid_t pid, sid;        // Variabel untuk menyimpan PID
 pid = fork();     // Menyimpan PID dari Child Process
@@ -75,11 +78,13 @@ close(STDIN_FILENO);
 close(STDOUT_FILENO);
 close(STDERR_FILENO);
 ```
+Kode program diatas berfungsi sebagai daemon atau program yang berjalan dilatar belakang. Membuat variabel **pid** untuk menyimpan PID dari child proses dan dicek jika nilai PID<0 atau tidak ada child proses maka gagal kemudian memasukkan nilai **setsid()** kedalam variabel **sid**. SID ini digunakan agar child process dapat berjalan, jika tidak memiliki sid maka program daemon yang dikill akan menjadi orphan process. Dan yang terakhir menutup semua input, output, dan error karena proses daemon ini berjalan dilatar belakang oleh karena itu tidak boleh menampilkan apapun pada terminal
+
 ```c
 while (1) {
   time_t now = time(NULL);
   struct tm *jam=localtime(&now);
-  
+
    if (atoi(valueargu[1]) == jam->tm_sec || *valueargu[1] == '*') {
    if (atoi(valueargu[2]) == jam->tm_min || *valueargu[2] == '*') {
    if (atoi(valueargu[3]) == jam->tm_hour || *valueargu[3] == '*') {
@@ -101,9 +106,24 @@ while (1) {
    sleep(1);
  }
 ```
+Kemudian mengambil waktu dengan menggunakan struct tm yang menuju pointer jam dan mengambil waktu sekarang dan dimasukkan dalam variabel jam. Setelah itu jam yang telah didapatkan dicek satu persatu dari detik, menit, hingga jam file .sh akan dijalankan. Yang terakhir adalah apabila waktu telah sesuai maka file .sh dapat dijalankan menggunakan bash.
+
+###output
+* Daemon sukses
+
+* Isi file tes .sh
+
+* Contoh jika argumen yang dimasukkan tidak sama dengan algoritma
+
+* Contoh jika waktu yang dimasukkan tidak sesuai
+
+* Contoh jika file .sh tidak ditemukan
 
 
 #### Kendala Selama Pengerjaan Soal 1
+* Kesulitan dalam pembuatan proses daemon
+* Kebingungan dalam memasukkan waktu dan mengecek waktu yang sudah ada dengan waktu yang diinputkan
+*
 
 ## Soal 2
 Kode Program: [soal2.c]()
@@ -134,6 +154,10 @@ Kiwa lalu terbangun dan sedih karena menyadari programnya hanya sebuah mimpi. Bu
 #### Penjelasan Program
 
 #### Kendala Selama Pengerjaan Soal 2
+* Kesulitan dalam memahami soal dan algoritma yang harus digunakan
+* Tingkat kesulitan soal yang tinggi
+* Bingung dalam mendownload gambar dan menentukan piksel gambar sesuai dengan soal
+*
 
 ## Soal 3
 Kode Program: [soal3.c](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/soal3/soal3.c)
@@ -161,3 +185,5 @@ Karena Jaya terlalu banyak tugas dia jadi stress, jadi bantulah Jaya agar bisa m
 #### Penjelasan Program
 
 #### Kendala Selama Pengerjaan Soal 3
+* Kesulitan dalam menentukan mana direktori dan mana File
+*
