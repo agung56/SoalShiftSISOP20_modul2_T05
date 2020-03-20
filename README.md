@@ -109,16 +109,20 @@ while (1) {
 Kemudian mengambil waktu dengan menggunakan struct tm yang menuju pointer jam dan mengambil waktu sekarang dan dimasukkan dalam variabel jam. Setelah itu jam yang telah didapatkan dicek satu persatu dari detik, menit, hingga jam file .sh akan dijalankan. Yang terakhir adalah apabila waktu telah sesuai maka file .sh dapat dijalankan menggunakan bash.
 
 ###output
-* Daemon sukses
+* Daemon sukses\
+![Program Daemon berhasil dijalankan](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/img/program%20berhasil.png)
 
-* Isi file tes .sh
+* Isi file tes .sh\
+![Isi file tes.sh](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/img/isi%20file%20shell.png)
 
-* Contoh jika argumen yang dimasukkan tidak sama dengan algoritma
+* Contoh jika argumen yang dimasukkan tidak sama dengan algoritma\
+![Argumen tidak sesuai](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/img/Argumen%20tidak%20sama%20dengan%20lima.png)
 
-* Contoh jika waktu yang dimasukkan tidak sesuai
+* Contoh jika waktu yang dimasukkan tidak sesuai\
+![Argumen tidak sesuai](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/img/waktu%20yang%20diinputkan%20salah.png)
 
-* Contoh jika file .sh tidak ditemukan
-
+* Contoh jika file .sh tidak ditemukan\
+![file .sh tidak ada](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/img/file%20shell%20tidak%20ada.png)
 
 #### Kendala Selama Pengerjaan Soal 1
 * Kesulitan dalam pembuatan proses daemon
