@@ -187,7 +187,79 @@ Karena Jaya terlalu banyak tugas dia jadi stress, jadi bantulah Jaya agar bisa m
 
 
 #### Penjelasan Program
+Berikut adalah library-library yang digunakan untuk mengerjakan soal no 3.
+```c
+#include <sys/stats.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <wait.h>
+#include <time.h>
+```
+
+
+* Soal 3.a
+```c
+pid_t idchild = fork();
+if (idchild == 0) {
+  char *valueargu[] = {"mkdir", "-p", "/home/Documents/sisop20/modul2/indomie", NULL};
+  execv("/bin/mkdir", valueargu);
+}
+while(wait(NULL) != idchild);
+sleep(5)
+
+idchild = fork();
+if (idchild == 0) {
+  char *valueargu[] = {"mkdir", "-p", "/home/Documents/sisop20/modul2/sedaap", NULL};
+  execv("/bin/mkdir", valueargu);
+}
+```
+Untuk soal 3.a pertama-tama memasukkan id child dari fungsi `fork()` kedalam variabel idchild, setelah itu dilakukan pengecekan jika nilai idchild sama dengan nol maka menjalankan argumen `mkdir` beserta parent-nya ke direktori yang telah ditentukan pada soal. Direktori pertama yang dibuat adalah indomie lalu lima detik kemudian membuat direktori sedaap pada lokasi yang sama
+
+* Soal 3.b
+```c
+while(wait(NULL) != idchild);
+
+  idchild = fork();
+  if (idchild == 0) {
+    char *valueargu[] = {"unzip", "-q", "jpg.zip", "-d", "/home/Documents/sisop20/modul2", NULL};
+    execv("/usr/bin/unzip", valueargu);
+  }
+```
+Kemudian setelah direktori terbentuk, tugas selanjutnya adalah mengekstrak file yang bernama **jpg.zip** dengan menggunakan command `unzip` pada lokasi yang sudah ditentukan
+
+* Soal 3.c
+
+Untuk soal 3.c kelompok kami tidak dapat menyelesaikannya karena kami kesulitan harus menggunakan cara yang seperti apa
+
+* Soal 3.d
+```c
+while(wait(NULL) != idchild);
+
+char new_location[80];
+idchild = fork();
+if (idchild == 0) {
+  sprintf(new_location, "/home/Documents/sisop20/modul2/indomie/%s/coba1.txt", token);
+  char *valueargu[] = {"touch", new_location, NULL};
+  execv("/usr/bin/touch", valueargu);
+}
+
+idchild = fork();
+if (idchild == 0) {
+  sleep(3);
+  sprintf(new_location, "/home/Documents/sisop20/modul2/indomie/%s/coba2.txt", token);
+  char *valueargu[] = {"touch", new_location, NULL};
+  execv("/usr/bin/touch", valueargu);
+}
+
+while(wait(NULL) != idchild);
+
+}
+```
+Kemudian untuk soal 3.d diminta membuat file coba1.txt dan coba2.txt pada setiap direktori yang ada pada direktori indomie dengan selang waktu tiga detik.  
 
 #### Kendala Selama Pengerjaan Soal 3
-* Kesulitan dalam menentukan mana direktori dan mana File
+* Kesulitan dalam menentukan mana direktori dan mana File dan harus menggunakan metode yang bagaimana
 *
