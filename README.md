@@ -40,6 +40,9 @@ Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan k
 **e.** Tidak boleh mennggunakan fungsi system()
 
 **Contoh:** `./program \* 34 7 /home/somi/test.sh`
+
+### Pembahasan
+
 #### Kendala Selama Pengerjaan Soal 1
 
 ## Soal 2
@@ -67,6 +70,9 @@ Kiwa lalu terbangun dan sedih karena menyadari programnya hanya sebuah mimpi. Bu
 * Gunakan fitur picsum.photos untuk mendapatkan gambar dengan ukuran tertentu.
 * Epoch Unix bisa didapatkan dari time().
 
+
+### Pembahasan
+
 #### Kendala Selama Pengerjaan Soal 2
 
 ## Soal 3
@@ -90,5 +96,8 @@ Karena Jaya terlalu banyak tugas dia jadi stress, jadi bantulah Jaya agar bisa m
 * Tidak boleh menggunakan function C mkdir() ataupun rename().
 * Gunakan exec dan fork.
 * Direktori "." dan ".." tidak termasuk.
+
+
+### Pembahasan
 
 #### Kendala Selama Pengerjaan Soal 3
