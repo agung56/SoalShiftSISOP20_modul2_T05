@@ -5,7 +5,7 @@
 
 ## Soal 1
 Kode Program: [soal1.c](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/soal1/soal1.c)
-### Soal
+#### Soal
 Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan ketentuan sebagai berikut:
 
 **a.** Program menerima 4 argumen berupa:
@@ -13,7 +13,7 @@ Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan k
   * Menit: 0-59 atau * (any value)
   * Jam: 0-23 atau * (any value)
   * Path file .sh
-  
+
 **b.** Program akan mengeluarkan pesan error jika argumen yang diberikan tidak sesuai
 
 **c.** Program hanya menerima 1 config cron
@@ -24,13 +24,90 @@ Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan k
 
 **Contoh:** `./program \* 34 7 /home/somi/test.sh`
 
-### Pembahasan
+#### Penjelasan Program
+```c
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <wait.h>
+#include <time.h>
+```
+
+```c
+if (checkargu != 5) {
+  printf("Argumen yang dimasukkan tidak sesuai\n");
+  return 1;
+}
+if (access(valueargu[4], F_OK) == -1) {
+  printf("File tidak ada\n");
+  return 1;
+}
+if (!(*valueargu[1] == '*' || (atoi(valueargu[1]) >= 0 && atoi(valueargu[1]) < 60))) {
+     printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
+  return 1;}
+if (!(*valueargu[2] == '*' || (atoi(valueargu[2]) >= 0 && atoi(valueargu[2]) < 60))) {
+     printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
+  return 1;}
+if (!(*valueargu[3] == '*' || (atoi(valueargu[3]) >= 0 && atoi(valueargu[3]) < 24))) {
+printf("Argumen yang dimasukkan salah (detik=0-59, menit=0-59, jam=0-23)\n");
+  return 1;
+}
+```
+```c
+pid_t pid, sid;        // Variabel untuk menyimpan PID
+pid = fork();     // Menyimpan PID dari Child Process
+/* Keluar saat fork gagal
+* (nilai variabel pid < 0) */
+if (pid < 0) {
+  exit(EXIT_FAILURE);
+}
+/* Keluar saat fork berhasil
+* (nilai variabel pid adalah PID dari child process) */
+if (pid > 0) {
+  exit(EXIT_SUCCESS);
+}
+sid = setsid();
+if (sid < 0) {
+  exit(EXIT_FAILURE);
+}
+close(STDIN_FILENO);
+close(STDOUT_FILENO);
+close(STDERR_FILENO);
+```
+```c
+while (1) {
+  time_t now = time(NULL);
+  struct tm *jam=localtime(&now);
+  
+   if (atoi(valueargu[1]) == jam->tm_sec || *valueargu[1] == '*') {
+   if (atoi(valueargu[2]) == jam->tm_min || *valueargu[2] == '*') {
+   if (atoi(valueargu[3]) == jam->tm_hour || *valueargu[3] == '*') {
+
+         pid_t child_id;
+         child_id = fork();
+
+         if (child_id == 0) {
+
+           char *childargu[] = {"bash", valueargu[4], NULL};
+           execv("/bin/bash", childargu);
+
+         }
+         while(wait(NULL) > 0);
+       }
+     }
+   }
+
+   sleep(1);
+ }
+```
+
 
 #### Kendala Selama Pengerjaan Soal 1
 
 ## Soal 2
 Kode Program: [soal2.c]()
-### Soal
+#### Soal
 Shisoppu mantappu! itulah yang selalu dikatakan Kiwa setiap hari karena sekarang dia merasa sudah jago materi sisop. Karena merasa jago, suatu hari Kiwa iseng membuat sebuah program.
 
 **a.** Pertama-tama, Kiwa membuat sebuah folder khusus, didalamnya dia membuat sebuah program C yang per 30 detik membuat sebuah folder dengan nama timestamp [YYYY-mm-dd_HH:ii:ss].
@@ -54,13 +131,13 @@ Kiwa lalu terbangun dan sedih karena menyadari programnya hanya sebuah mimpi. Bu
 * Epoch Unix bisa didapatkan dari time().
 
 
-### Pembahasan
+#### Penjelasan Program
 
 #### Kendala Selama Pengerjaan Soal 2
 
 ## Soal 3
 Kode Program: [soal3.c](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/soal3/soal3.c)
-### Soal
+#### Soal
 Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
 
 **a.** Program buatan Jaya harus bisa membuat dua direktori di **"/home/[USER]/modul2/"**. Direktori yang pertama diberi nama **"indomie"**, lalu lima detik kemudian membuat direktori yang kedua bernama **"sedaap"**.
@@ -81,6 +158,6 @@ Karena Jaya terlalu banyak tugas dia jadi stress, jadi bantulah Jaya agar bisa m
 * Direktori "." dan ".." tidak termasuk.
 
 
-### Pembahasan
+#### Penjelasan Program
 
 #### Kendala Selama Pengerjaan Soal 3
