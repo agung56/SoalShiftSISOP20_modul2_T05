@@ -13,7 +13,7 @@ int main() {
 //-------------------SOAL 3.A----------------------------//
   pid_t idchild = fork();
   if (idchild == 0) {
-    char *valueargu[] = {"mkdir", "-p", "/home/lab/modul2/indomie", NULL};
+    char *valueargu[] = {"mkdir", "-p", "/home/Documents/sisop20/modul2/indomie", NULL};
     execv("/bin/mkdir", valueargu);
   }
   while(wait(NULL) != idchild);
@@ -21,7 +21,7 @@ int main() {
 
   idchild = fork();
   if (idchild == 0) {
-    char *valueargu[] = {"mkdir", "-p", "/home/lab/modul2/sedaap", NULL};
+    char *valueargu[] = {"mkdir", "-p", "/home/Documents/sisop20/modul2/sedaap", NULL};
     execv("/bin/mkdir", valueargu);
   }
 
@@ -30,20 +30,29 @@ int main() {
 
   idchild = fork();
   if (idchild == 0) {
-    char *valueargu[] = {"unzip", "-q", "jpg.zip", "-d", "/home/lab/modul2", NULL};
+    char *valueargu[] = {"unzip", "-q", "jpg.zip", "-d", "/home/Documents/sisop20/modul2", NULL};
     execv("/usr/bin/unzip", valueargu);
   }
 
 //---------------------------soal 3D---------------------//
-      idchild = fork();
-      if (idchild == 0) {
-        sleep(3);
-        sprintf(lokbaru, "/home/lab/modul2/indomie/%s/coba2.txt", token);
-        char *valueargu[] = {"touch", lokbaru, NULL};
-        execv("/usr/bin/touch",`` valueargu);
-      }
+while(wait(NULL) != idchild);
 
+char new_location[80];
+idchild = fork();
+if (idchild == 0) {
+  sprintf(new_location, "/home/Documents/sisop20/modul2/indomie/%s/coba1.txt", token);
+  char *valueargu[] = {"touch", new_location, NULL};
+  execv("/usr/bin/touch", valueargu);
+}
 
-  closedir(dr);
+idchild = fork();
+if (idchild == 0) {
+  sleep(3);
+  sprintf(new_location, "/home/Documents/sisop20/modul2/indomie/%s/coba2.txt", token);
+  char *valueargu[] = {"touch", new_location, NULL};
+  execv("/usr/bin/touch", valueargu);
+}
 
-}.
+while(wait(NULL) != idchild);
+
+}
