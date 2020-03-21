@@ -127,10 +127,10 @@ Kemudian mengambil waktu dengan menggunakan struct tm yang menuju pointer jam da
 #### Kendala Selama Pengerjaan Soal 1
 * Kesulitan dalam pembuatan proses daemon
 * Kebingungan dalam memasukkan waktu dan mengecek waktu yang sudah ada dengan waktu yang diinputkan
-*
+* Sedikit kebingungan bagaimana cara mengecek apakah file .sh sudah ada atau belum
 
 ## Soal 2
-Kode Program: [soal2.c]()
+
 #### Soal
 Shisoppu mantappu! itulah yang selalu dikatakan Kiwa setiap hari karena sekarang dia merasa sudah jago materi sisop. Karena merasa jago, suatu hari Kiwa iseng membuat sebuah program.
 
@@ -156,12 +156,14 @@ Kiwa lalu terbangun dan sedih karena menyadari programnya hanya sebuah mimpi. Bu
 
 
 #### Penjelasan Program
+Untuk soal nomor 2 kelompok kami tidak dapat menyelesaikan atau menemukan solusi atas permasalahan pada soal diatas. Untuk kendala-kendala yang menyebabkan tidak selesainya atau tidak terjawabnya soal ini akan kami sampaikan pada bagian kendala pengerjaan soal.
 
 #### Kendala Selama Pengerjaan Soal 2
 * Kesulitan dalam memahami soal dan algoritma yang harus digunakan
 * Tingkat kesulitan soal yang tinggi
 * Bingung dalam mendownload gambar dan menentukan piksel gambar sesuai dengan soal
-*
+* Tidak paham dengan maksud MODE_A dan MODE_B yang ada pada soal
+* Tidak tahu bagaimana cara membuat proses kill pada program
 
 ## Soal 3
 Kode Program: [soal3.c](https://github.com/agung56/SoalShiftSISOP20_modul2_T05/blob/master/soal3/soal3.c)
@@ -258,8 +260,9 @@ while(wait(NULL) != idchild);
 
 }
 ```
-Kemudian untuk soal 3.d diminta membuat file coba1.txt dan coba2.txt pada setiap direktori yang ada pada direktori indomie dengan selang waktu tiga detik.  
+Kemudian untuk soal 3.d diminta membuat file coba1.txt dan coba2.txt pada setiap direktori yang ada pada direktori indomie dengan selang waktu tiga detik. Sebelumnya membuat variabl **new_location** untuk memasukkan lokasi file coba1.txt dan coba2.txt. `sprintf(new_location, "/home/Documents/sisop20/modul2/indomie/%s/coba1.txt", token);` Kemudian memasukkan lokasi tempat file tadi dibuat kedalam new_location, dan **%s** yang dimaksud adalah token yang ada pada direktori tempat file akan dibuat. Setelah itu file dibuat dengan menggunakan command `touch`. Hal yang sama berlaku saat membuat file coba2.txt tiga detik kemudian setelah file coba1.txt dibuat.
+
+Untuk program sendiri masih akan menampilkan error karena kode program untuk 3d tidak dapat berjalan apabila kode program untuk 3c belum dijalankan
 
 #### Kendala Selama Pengerjaan Soal 3
 * Kesulitan dalam menentukan mana direktori dan mana File dan harus menggunakan metode yang bagaimana
-*
